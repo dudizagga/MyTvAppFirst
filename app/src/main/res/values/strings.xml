@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyTvApp</string>
+    <string name="tv_Shows">tv Shows/Movies</string>
+    <string name="countries">Countries</string>
+    <string name="categories">Categories</string>
+    <string name="description">Media Controls</string>
+    <string name="MyTvApp">My Tv App</string>
+</resources>
