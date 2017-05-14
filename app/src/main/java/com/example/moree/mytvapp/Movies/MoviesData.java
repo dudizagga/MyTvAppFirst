@@ -1,4 +1,4 @@
-package com.example.moree.mytvapp.TvShow;
+package com.example.moree.mytvapp.Movies;
 
 /**
  * Created by moree on 1/30/2017.

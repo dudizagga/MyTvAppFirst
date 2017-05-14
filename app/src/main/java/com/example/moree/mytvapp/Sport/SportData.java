@@ -5,8 +5,7 @@ package com.example.moree.mytvapp.Sport;
  */
 
 public class SportData {
-    public String UkChannel_Pic;
-    public String UKChannel_Link;
-    public String UkChannel_Name;
-    public String objectId;
+    public String SportChannel_Link;
+    public String SportChannel_Pic;
+
 }

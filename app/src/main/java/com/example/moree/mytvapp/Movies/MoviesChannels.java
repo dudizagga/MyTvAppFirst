@@ -30,15 +30,16 @@ import java.util.ArrayList;
 public class MoviesChannels extends Fragment {
     Context context;
     ArrayList<String> link;
-    ArrayList<String> getTvShowsPics=new ArrayList<>();
-    ArrayList<String> getTvShowsNames=new ArrayList<>();
+    ArrayList<String> getTvShowsPics = new ArrayList<>();
+    ArrayList<String> getTvShowsNames = new ArrayList<>();
     public GridView listTvShows;
+
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, Bundle savedInstanceState) {
         context = container.getContext();
 
-       //saveTvShow();
+        //saveTvShow();
         getTvShow();
         Toast.makeText(context, "TvShow", Toast.LENGTH_SHORT).show();
         View movInf = inflater.inflate(R.layout.activity_categories, container, false);
@@ -47,13 +48,16 @@ public class MoviesChannels extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+//check point
+                Intent intent = new Intent(context, Video.class);
+                intent.putExtra("link", (getTvShowsNames.get(i)));
+                context.startActivity(intent);
 
-
-
+/*
                 Intent intent = new Intent(context,Video.class);
                 intent.setData(Uri.parse(String.valueOf(getTvShowsNames.get(i))));
                 context.startActivity(intent);
-
+*/
             }
 
         });
@@ -62,34 +66,38 @@ public class MoviesChannels extends Fragment {
         return movInf;
 
     }
-    private void saveTvShow()
-    {
-        MoviesData MoviesData=new MoviesData();
-        MoviesData.MoviesChannel_Link="dasdasda";
-        MoviesData.MoviesChannel_Pic="dsfsdfsd";
-Backendless.Persistence.of(MoviesData.class).save(MoviesData, new AsyncCallback<com.example.moree.mytvapp.Movies.MoviesData>() {
-    @Override
-    public void handleResponse(MoviesData response) {
-        Toast.makeText(context, "Movies data was saved", Toast.LENGTH_SHORT).show();
+
+
+
+
+    private void saveTvShow() {
+        MoviesData MoviesData = new MoviesData();
+        MoviesData.MoviesChannel_Link = "dasdasda";
+        MoviesData.MoviesChannel_Pic = "dsfsdfsd";
+        Backendless.Persistence.of(MoviesData.class).save(MoviesData, new AsyncCallback<com.example.moree.mytvapp.Movies.MoviesData>() {
+            @Override
+            public void handleResponse(MoviesData response) {
+                Toast.makeText(context, "Movies data was saved", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
     }
 
-    @Override
-    public void handleFault(BackendlessFault fault) {
-
-    }
-});
-    }
     private void getTvShow() {
 
         Backendless.Persistence.of(MoviesData.class).find(new AsyncCallback<BackendlessCollection<MoviesData>>() {
             @Override
             public void handleResponse(BackendlessCollection<MoviesData> response) {
-                for (MoviesData item:response.getData())
-                {
+                for (MoviesData item : response.getData()) {
                     getTvShowsNames.add(item.MoviesChannel_Link);
                     getTvShowsPics.add(item.MoviesChannel_Pic);
                 }
-                listTvShows.setAdapter(new MyCountryAdapter(context,getTvShowsPics,getTvShowsNames));
+                listTvShows.setAdapter(new MyCountryAdapter(context, getTvShowsPics, getTvShowsNames));
+                return;
             }
 
             @Override

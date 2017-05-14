@@ -16,12 +16,12 @@ import com.backendless.BackendlessCollection;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.example.moree.mytvapp.FirstMain;
-import com.example.moree.mytvapp.Music.Music;
+import com.example.moree.mytvapp.Music.MusicChannels;
 import com.example.moree.mytvapp.MyCountries.MyCountryAdapter;
-import com.example.moree.mytvapp.News.News;
-import com.example.moree.mytvapp.R;
+import com.example.moree.mytvapp.News.NewsChannels;
 import com.example.moree.mytvapp.Sport.SportChannels;
-import com.example.moree.mytvapp.TvShow.TvShow;
+import com.example.moree.mytvapp.R;
+import com.example.moree.mytvapp.Movies.MoviesChannels;
 
 import java.util.ArrayList;
 
@@ -60,15 +60,15 @@ switch (i)
        break;
     case 1:
         Toast.makeText(context, "News", Toast.LENGTH_SHORT).show();
-        first.nextFragment(R.id.fcontainer,new News());
+        first.nextFragment(R.id.fcontainer,new NewsChannels());
         break;
     case 2:
         Toast.makeText(context, "Music", Toast.LENGTH_SHORT).show();
-        first.nextFragment(R.id.fcontainer,new Music());
+        first.nextFragment(R.id.fcontainer,new MusicChannels());
         break;
     case 3:
         Toast.makeText(context, "tv show", Toast.LENGTH_SHORT).show();
-        first.nextFragment(R.id.fcontainer,new TvShow());
+        first.nextFragment(R.id.fcontainer,new MoviesChannels());
         break;
 }
 

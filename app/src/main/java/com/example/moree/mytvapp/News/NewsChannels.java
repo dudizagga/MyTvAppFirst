@@ -49,7 +49,7 @@ public class NewsChannels extends Fragment {
 
 
                 Intent intent = new Intent(context,Video.class);
-                intent.setData(Uri.parse(String.valueOf(link.get(i))));
+                intent.putExtra("link",getNewsNames.get(i));
                 context.startActivity(intent);
 
             }
@@ -71,6 +71,7 @@ public class NewsChannels extends Fragment {
                     getNewsPics.add(item.NewsChannel_Pic);
                 }
                 listNews.setAdapter(new MyCountryAdapter(context,getNewsPics,getNewsNames));
+           return;
             }
 
             @Override

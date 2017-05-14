@@ -7,5 +7,5 @@ package com.example.moree.mytvapp.Italy;
 public class ItalyData {
     public String ITChannel_Pic;
     public String ITChannel_Link;
-    public String ITChannel_Name;
+    //public String ITChannel_Name;
 }

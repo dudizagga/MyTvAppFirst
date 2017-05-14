@@ -51,7 +51,7 @@ public class MusicChannels extends Fragment {
 
 
                 Intent intent = new Intent(context,Video.class);
-                intent.setData(Uri.parse(String.valueOf(link.get(i))));
+                intent.putExtra("link",getMusicNames.get(i));
                 context.startActivity(intent);
 
             }
@@ -73,6 +73,7 @@ public class MusicChannels extends Fragment {
                 }
 
 listMusic.setAdapter(new MyCountryAdapter(context,getMusicPics,getMusicNames));
+          return;
             }
 
             @Override

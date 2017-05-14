@@ -13,6 +13,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.example.moree.mytvapp.MyCountries.MyCountryAdapter;
 import com.example.moree.mytvapp.R;
 import com.example.moree.mytvapp.Video;
 
@@ -35,6 +40,7 @@ public class SportChannels extends Fragment {
         context = container.getContext();
 
         // savedata();
+        getSportData();
         Toast.makeText(context, "TvShow", Toast.LENGTH_SHORT).show();
         View movInf = inflater.inflate(R.layout.activity_categories, container, false);
         listSports = (GridView) movInf.findViewById(R.id.TvShow);
@@ -46,7 +52,7 @@ public class SportChannels extends Fragment {
 
 
                 Intent intent = new Intent(context,Video.class);
-                intent.setData(Uri.parse(String.valueOf(link.get(i))));
+                intent.putExtra("link",getSportNames.get(i));
                 context.startActivity(intent);
 
             }
@@ -56,6 +62,26 @@ public class SportChannels extends Fragment {
 
         return movInf;
 
+    }
+    private void getSportData()
+    {
+        Backendless.Persistence.of(SportData.class).find(new AsyncCallback<BackendlessCollection<SportData>>() {
+            @Override
+            public void handleResponse(BackendlessCollection<SportData> response) {
+                for (SportData item:response.getData())
+                {
+                    getSportNames.add(item.SportChannel_Link);
+                    getSportsPics.add(item.SportChannel_Pic);
+                }
+                listSports.setAdapter(new MyCountryAdapter(context,getSportsPics,getSportNames));
+return;
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
     }
 
 

@@ -5,8 +5,6 @@ package com.example.moree.mytvapp.Music;
  */
 
 public class MusicData {
-    public String UkChannel_Pic;
-    public String UKChannel_Link;
-    public String UkChannel_Name;
-    public String objectId;
+    public String MusicChannel_Pic;
+    public String MusicChannel_Link;
 }
